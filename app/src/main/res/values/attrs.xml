@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CheckItemView">
+        <attr name="icon" format="reference"/>
+        <attr name="text" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="CheckMenuView">
+        <attr name="item_colors" format="reference"/>
+        <attr name="badge_color" format="color"/>
+    </declare-styleable>
+</resources>

@@ -3,4 +3,11 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    
+    <color name="aliceBlue">#F9FBFC</color>
+    <color name="balticSea">#343c45</color>
+    <color name="pattensBlue">#DCE5EC</color>
+    <color name="hawkesBlue">#DBDDE1</color>
+    <color name="topaz">#8A898B</color>
+    <color name="linkWater">#CFD3D7</color>
 </resources>
