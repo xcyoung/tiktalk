@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_explore"
+        android:title="Explore"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:title="Profile"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/navigation_explore1"
+        android:title="Explore"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/navigation_explore2"
+        android:title="Explore"
+        app:showAsAction="ifRoom"/>
+
+</menu>
