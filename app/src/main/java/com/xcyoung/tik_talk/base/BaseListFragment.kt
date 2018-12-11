@@ -32,6 +32,14 @@ abstract class BaseListFragment :BaseFragment() {
         loadData(isClean)
     }
 
+    protected fun onDataLoadSuccess(data:List<Any>){
+        if(data.isNotEmpty()){
+            if(items.isNotEmpty()) items.clear()
+            items.addAll(data)
+            adapter.notifyDataSetChanged()
+        }
+    }
+
     open fun configRecyclerView(recyclerView: RecyclerView){
 
     }

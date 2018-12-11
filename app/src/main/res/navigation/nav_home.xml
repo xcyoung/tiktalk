@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_home"
+    app:startDestination="@id/homeActivity">
+    <activity
+        android:id="@+id/homeActivity"
+        android:name="com.xcyoung.tik_talk.moudle.home.HomeActivity"
+        android:label="HomeActivity"
+        tools:layout="@layout/activity_home"/>
+    <fragment
+        android:id="@+id/messageFragment"
+        android:name="com.xcyoung.tik_talk.moudle.message.msg.MessageFragment"
+        android:label="MessageFragment"
+        tools:layout="@layout/layout_list"/>
+    <fragment
+        android:id="@+id/findFragment"
+        android:name="com.xcyoung.tik_talk.moudle.find.FindFragment"
+        android:label="FindFragment"
+        tools:layout="@layout/fragment_example"/>
+    <fragment
+        android:id="@+id/friendsFragment"
+        android:name="com.xcyoung.tik_talk.moudle.friends.FriendsFragment"
+        android:label="FriendsFragment"
+        tools:layout="@layout/fragment_example"/>
+    <fragment
+        android:id="@+id/mineFragment"
+        android:name="com.xcyoung.tik_talk.moudle.user.MineFragment"
+        android:label="MineFragment"
+        tools:layout="@layout/fragment_example"/>
+</navigation>

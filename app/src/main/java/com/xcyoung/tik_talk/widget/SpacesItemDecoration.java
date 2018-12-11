@@ -3,6 +3,7 @@ package com.xcyoung.tik_talk.widget;
 import android.graphics.Rect;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,7 +22,7 @@ public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
     }
 
     @Override
-    public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+    public void getItemOffsets(@NonNull Rect outRect,@NonNull View view,@NonNull RecyclerView parent,@NonNull RecyclerView.State state) {
         super.getItemOffsets(outRect, view, parent, state);
         RecyclerView.LayoutManager layoutManager=parent.getLayoutManager();
         //因为LinearLayoutManager是GridLayoutManager父类，需要先判断GridLayoutManager
@@ -40,11 +41,12 @@ public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
      */
     private void setLinearLayoutManagerOffsets(Rect outRect, View view, RecyclerView parent) {
         LinearLayoutManager linearLayoutManager= (LinearLayoutManager) parent.getLayoutManager();
+        if(linearLayoutManager == null) return;
         boolean hasFooter;
         int lastCount;
         lastCount=linearLayoutManager.getItemCount()-1;
 
-        if(linearLayoutManager.getOrientation()==LinearLayoutManager.VERTICAL){
+        if(linearLayoutManager.getOrientation()==RecyclerView.VERTICAL){
             if(parent.getChildAdapterPosition(view) == lastCount){
                 outRect.bottom= topBottomSpace;
             }
@@ -69,10 +71,11 @@ public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
      */
     private void setGridManagerOffsets(Rect outRect, View view, RecyclerView parent){
         GridLayoutManager gridLayoutManager= (GridLayoutManager) parent.getLayoutManager();
+        if(gridLayoutManager == null) return;
         final GridLayoutManager.LayoutParams lp = (GridLayoutManager.LayoutParams) view.getLayoutParams();
         int childPostion=parent.getChildAdapterPosition(view);      //获取view所在的位置
         int spanCount=gridLayoutManager.getSpanCount();             //获取每行列数
-        if(gridLayoutManager.getOrientation() == GridLayoutManager.VERTICAL){
+        if(gridLayoutManager.getOrientation() == RecyclerView.VERTICAL){
             outRect.bottom=topBottomSpace;
             if(lp.getSpanSize() == spanCount){          //这个item占满一行时
                 outRect.left=rightLeftSpace;

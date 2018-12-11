@@ -36,6 +36,7 @@ class CheckMenuView : ConstraintLayout {
                     child.isSelected = true
                     curPosition = i
                 }
+
                 child.setOnClickListener {
                     if(curPosition == i) return@setOnClickListener
                     if(curPosition != -1) getChildAt(curPosition).isSelected = false

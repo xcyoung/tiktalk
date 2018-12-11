@@ -1,25 +1,33 @@
-package com.xcyoung.tik_talk.moudle.message
+package com.xcyoung.tik_talk.moudle.message.msg
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.xcyoung.tik_talk.R
 import com.xcyoung.tik_talk.base.BaseListFragment
+import com.xcyoung.tik_talk.bean.MsgResult
 import com.xcyoung.tik_talk.widget.SpacesItemDecoration
-import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
-import com.yqritc.recyclerviewflexibledivider.VerticalDividerItemDecoration
 
 /**
  * @author ChorYeung
  * @since 2018/11/26
  */
 class MessageFragment :BaseListFragment() {
-
+    private lateinit var msgViewModel: MessageViewModel
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter.register(Any::class.java,MessageViewBinder())
+        msgViewModel = ViewModelProviders.of(this).get(MessageViewModel::class.java)
+        adapter.register(MsgResult::class.java, MessageViewBinder())
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        msgViewModel.messageListLiveData.observe(this, Observer {
+            onDataLoadSuccess(it)
+        })
     }
 
     override fun getLayoutManager(): RecyclerView.LayoutManager {
@@ -27,14 +35,11 @@ class MessageFragment :BaseListFragment() {
     }
 
     override fun loadData(isClean: Boolean) {
-        for (i in 0..10){
-            items.add(Any())
-        }
+        msgViewModel.getMessageList()
     }
 
     override fun configRecyclerView(recyclerView: RecyclerView) {
         super.configRecyclerView(recyclerView)
-        recyclerView.addItemDecoration(SpacesItemDecoration(resources.getDimensionPixelSize(R.dimen.dp_8)
-                ,resources.getDimensionPixelSize(R.dimen.dp_5)))
+        recyclerView.addItemDecoration(SpacesItemDecoration(resources.getDimensionPixelSize(R.dimen.dp_8),resources.getDimensionPixelSize(R.dimen.dp_5)))
     }
 }
